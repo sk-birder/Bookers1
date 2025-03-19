@@ -1,3 +1,6 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  # root to:  'コントローラ名#アクション名'
+  root to: 'homes#top'
+  get 'homes/top' # ルートパスでの表示に変更
+  resources :books # index, create, new, edit, show, update(PATCH), update(PUT), destroy
 end
