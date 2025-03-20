@@ -11,7 +11,7 @@ class BooksController < ApplicationController
     @book_all = Book.all # これを書くと、不細工だけどとりあえず機能させることは出来る
     @book = Book.new(book_params)
     if @book.save
-      flash[:notice] = "Book was successfully created." # nowが必要かも
+      flash[:notice] = "Book was successfully created."
       redirect_to book_path(@book.id)  
     else
       render :index
@@ -27,10 +27,10 @@ class BooksController < ApplicationController
   end
 
   def update
-    book = Book.find(params[:id])
-    if book.update(book_params)
+    @book = Book.find(params[:id]) # バリデーションエラー時にeditのviewに表示するためインスタンス変数とする
+    if @book.update(book_params)
       flash[:notice] = "Book was successfully updated."
-      redirect_to book_path(book.id)  
+      redirect_to book_path(@book.id)  
     else
       render :edit
     end
@@ -40,6 +40,7 @@ class BooksController < ApplicationController
   def destroy
     book = Book.find(params[:id])
     book.destroy
+    flash[:notice] = "Book was successfully destroyed."
     redirect_to '/books'
   end
 
