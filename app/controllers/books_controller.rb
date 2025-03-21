@@ -8,7 +8,7 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book_all = Book.all # これを書くと、不細工だけどとりあえず機能させることは出来る
+    @book_all = Book.all
     @book = Book.new(book_params)
     if @book.save
       flash[:notice] = "Book was successfully created."
@@ -34,7 +34,6 @@ class BooksController < ApplicationController
     else
       render :edit
     end
-
   end
 
   def destroy
