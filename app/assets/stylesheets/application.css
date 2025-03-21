@@ -4,6 +4,14 @@
   box-sizing: border-box;
  }
 
+ a {
+  color: #000;
+ }
+
+ a:visited{
+  color: #666;
+ }
+
  body {
   background-color: #fff;
   color: #333;
@@ -43,18 +51,18 @@
   list-style: square;
 }
 
-.form-error {
-  border: 2px solid red;
+.field-error {
+  /* border: 2px solid red; */
   padding: 2px;
   background-color: red;
   display: table;
 }
 
-.book-list-head {
+.book-list th {
   padding: 1px 1px 5px;
 }
 
-.book-list-item {
+.book-list td {
   padding: 1px 5px 7px;
 }
 
@@ -65,4 +73,16 @@
 .flash {
   margin: 33px;
   color: #008000;
+}
+
+.welcome {
+  margin: 33px;
+}
+
+.contribution {
+  margin: 0 0 10px;
+}
+
+.contribution-button {
+  margin: 1px 6px;
 }
