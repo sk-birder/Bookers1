@@ -1,46 +1,44 @@
-<body>
-  <h1>Editing Book</h1>
+<h1>Editing Book</h1>
 
-  <% if @book.errors.any? %>
-    <div id="error_explanation">
-      <% if @book.errors.count == 1 %> <!-- エラーが1個 -->
-        <h2><%= @book.errors.count %> error prohibited this book from being saved:</h2>
-      <% else %> <!-- エラーが2個以上(1以上かつ1でない) -->
-        <h2><%= @book.errors.count %> errors prohibited this book from being saved:</h2>
+<% if @book.errors.any? %>
+  <div id="error_explanation">
+    <% if @book.errors.count == 1 %> <!-- エラーが1個 -->
+      <h2><%= @book.errors.count %> error prohibited this book from being saved:</h2>
+    <% else %> <!-- エラーが2個以上(1以上かつ1でない) -->
+      <h2><%= @book.errors.count %> errors prohibited this book from being saved:</h2>
+    <% end %>
+    <ul>
+      <% @book.errors.full_messages.each do |m| %>
+        <li><%= m %></li>
       <% end %>
-      <ul>
-        <% @book.errors.full_messages.each do |m| %>
-          <li><%= m %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+    </ul>
+  </div>
+<% end %>
 
-  <%= form_with model: @book, url: book_path(@book.id), method: :patch do |f| %>
-    <section class="contribution">
-      <% if @book.errors.include?(:title) %>
-        <div class="field-error">Title</div>
-        <div class="field-error"><%= f.text_field :title %></div>
-      <% else %>
-        <div class="field-normal">Title</div>
-        <div class="field-normal"><%= f.text_field :title %></div>
-      <% end %>
-    </section>
+<%= form_with model: @book, url: book_path(@book.id), method: :patch do |f| %>
+  <section class="contribution">
+    <% if @book.errors.include?(:title) %>
+      <div class="field-error">Title</div>
+      <div class="field-error"><%= f.text_field :title %></div>
+    <% else %>
+      <div class="field-normal">Title</div>
+      <div class="field-normal"><%= f.text_field :title %></div>
+    <% end %>
+  </section>
 
-    <section class="contribution">
-      <% if @book.errors.include?(:body) %>
-        <div class="field-error">Body</div>
-        <div class="field-error"><%= f.text_area :body %></div>
-      <% else %>
-        <div class="field-normal">Body</div>
-        <div class="field-normal"><%= f.text_area :body %></div>
-      <% end %>
-    </section>
-    
-    <section class="contribution-button">
-      <%= f.submit 'Update Book' %>
-    </section>
-  <% end %>
+  <section class="contribution">
+    <% if @book.errors.include?(:body) %>
+      <div class="field-error">Body</div>
+      <div class="field-error"><%= f.text_area :body %></div>
+    <% else %>
+      <div class="field-normal">Body</div>
+      <div class="field-normal"><%= f.text_area :body %></div>
+    <% end %>
+  </section>
+  
+  <section class="contribution-button">
+    <%= f.submit 'Update Book' %>
+  </section>
+<% end %>
 
-  <%= link_to 'Show', book_path(@book.id) %> | <%= link_to 'Back', :books %>
-</body>
+<%= link_to 'Show', book_path(@book.id) %> | <%= link_to 'Back', :books %>

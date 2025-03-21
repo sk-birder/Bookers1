@@ -5,8 +5,8 @@
     <th>Body</th>
     <th colspan="3"></th>
   </thead>
-  <tbody>
-    <% @book_all.each do |l| %>
+  <% @book_all.each do |l| %>
+    <tbody>
       <tr>
         <td><%= l.title %></td>
         <td><%= l.body %></td>
@@ -14,7 +14,7 @@
         <td><%= link_to 'Edit', edit_book_path(l.id) %></td>
         <td><%= link_to 'Destroy', book_path(l.id), method: :delete, "data-confirm" => "Are you sure?" %></td>
       </tr>
-  </tbody>
+    </tbody>
   <% end %>
 </table>
 
